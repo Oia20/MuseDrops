@@ -3,11 +3,11 @@ import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
-
+//fetch data asychronously
   useEffect(() => {
     fetchData();
   }, []);
-
+  //fetch data from server
   const fetchData = async () => {
     try {
       const response = await fetch('http://localhost:5005/api/items');
@@ -20,7 +20,7 @@ function App() {
       console.error('Error fetching data:', error);
     }
   };
-
+//return list from db
   return (
     <div>
       <h1>My Component</h1>
