@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
+import "./tailindex.css"
 export default function Nav() {
     return (
-        <div></div>
+                <h1 className="text-6xl underline">
+      Hello world!
+    </h1>
     )
 }
