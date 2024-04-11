@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Post from "./post.jsx"
+import "./tailindex.css"
+
 function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,14 +40,14 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Droplets</h1>
-      <ul>
-        {data.map(item => (
-          <p key={item.id}>{item.title}: {item.content}</p>
-        ))}
-      </ul>
+<div className="pool-tile relative">
+  <h1 className="text-center p-10 text-5xl font-bold">Droplets</h1>
+  {data.map(item => (
+    <div key={item.id} className="flex p-5  justify-center m-10 bg-blue-500 rounded-lg w-auto shadow-xl">
+      <p className="text-white">{item.title}: {item.content}</p>
     </div>
+  ))}
+</div>
   );
 }
 
