@@ -13,13 +13,13 @@ export default function Nav() {
       </div>
       <button
         id="postButton"
-        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+        className="bg-gradient-to-b from-blue-500 to-blue-700 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
         onClick={handleClick}
       >
         <p className=' z-10'>Post a Drop</p>
         <img src="water-drop-svgrepo-com.svg" className=" h-5 w-5 absolute"/>
-
       </button>
     </header>
+    
   );
 }

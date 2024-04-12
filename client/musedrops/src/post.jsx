@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./tailindex.css"
 
 export default function Post() {
     const [title, setTitle] = useState('');
@@ -28,7 +29,7 @@ export default function Post() {
         }
       };
     return (
-        <div>
+        <div className=' w-screen h-screen bg-gradient-to-br from-bg-blue-200 to-blue-700'>
         <form onSubmit={handleSubmit}>
           <input 
             placeholder='Post Title' 
