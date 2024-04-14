@@ -19,12 +19,6 @@ function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  document.addEventListener("mousemove", function (e) {
-    const body = document.querySelector(".pool-tile");
-    const xPos = e.clientX / window.innerWidth - 0.5;
-    const yPos = e.clientY / window.innerHeight - 0.5;
-    body.style.backgroundPosition = `${xPos * 20}px ${yPos * 20}px`;
-  });
 
   useEffect(() => {
     fetchData();
@@ -57,7 +51,7 @@ function App() {
   }
 
   return (
-    <div className="pool-tile relative">
+    <div className="">
       <h1 className="text-center p-10 text-5xl font-bold">Most Recent Droplets</h1>
       <p className="text-center font-bold">*Click a muse to copy it to clipboard*</p>
       {data.map(item => (
