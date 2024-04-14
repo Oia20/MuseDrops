@@ -1,7 +1,6 @@
 import React from 'react';
 import "./tailindex.css";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import NewPost from "./newPost.jsx"
 
 export default function Nav() {
 
