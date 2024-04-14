@@ -8,6 +8,7 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 //   const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
@@ -23,7 +24,7 @@ function Register() {
         const data = await response.json();
         if (response.ok) {
             // Registration successful, redirect to login page
-            return <Link to="/" />;
+            setRegistrationSuccess(true);
           } else {
             // Registration failed, display error message
             setError(data.error);
@@ -35,7 +36,9 @@ function Register() {
         // Handle error, e.g., display error message to user
         }
     };
-
+    if (registrationSuccess) {
+        return <Link to="/login" />;
+      }
   return (
     <div className='h-screen flex justify-center items-center flex-col pb-40'>
         <img src="Muse.png" alt="Musedrops Logo" className=" h-28 w-28 border-2 border-blue-900 mb-4" />
