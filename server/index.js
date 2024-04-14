@@ -5,6 +5,7 @@ const port = 5005;
 const mysql = require('mysql2');
 const path = require('path');
 const dotenv = require('dotenv');
+const bcrypt = require('bcrypt');
 
 // Specify the path to the .env file
 const envPath = path.resolve(__dirname, '../.env');
@@ -50,6 +51,32 @@ app.post('/api/items', (req, res) => {
       res.status(500).json({ error: 'Failed to add item to database' });
     } else {
       res.json({ message: 'Item added successfully' });
+    }
+  });
+});
+
+// Registration Endpoint
+app.post('/api/register', (req, res) => {
+  const { email, password } = req.body;
+  const hashedPassword = bcrypt.hashSync(password, 10);
+  
+  // Check if email already exists in the database
+  connection.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+    if (err) {
+      res.status(500).json({ error: 'Database error' });
+    } else if (results.length > 0) {
+      // Email already exists, return error
+      res.status(400).json({ error: 'Email is already in use' });
+    } else {
+      // Email doesn't exist, proceed with registration
+      const sql = 'INSERT INTO users (email, password) VALUES (?, ?)';
+      connection.query(sql, [email, hashedPassword], (err, result) => {
+        if (err) {
+          res.status(500).json({ error: 'Failed to register user' });
+        } else {
+          res.json({ message: 'User registered successfully' });
+        }
+      });
     }
   });
 });
