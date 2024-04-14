@@ -9,7 +9,7 @@ export default function Nav() {
   }
 
   return (
-    <header className="bg-gray-800 p-4 flex items-center justify-between">
+    <header className="bg-gray-900 p-4 flex items-center justify-between">
       <div className="flex items-center">
         <img src="Muse.png" alt="Musedrops Logo" className="h-8 mr-2" />
         <span className="text-white text-lg font-semibold">Musedrops</span>

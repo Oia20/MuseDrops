@@ -54,7 +54,7 @@ function App() {
     <div className="">
       <h1 className="text-center p-10 text-5xl font-bold">Most Recent Droplets</h1>
       <p className="text-center font-bold">*Click a muse to copy it to clipboard*</p>
-      {data.map(item => (
+      {data.slice().reverse().map(item => (
         <div
           key={item.id}
           className="border-2 border-blue-900 shadow-2xl flex p-5 justify-center m-10 bg-gradient-to-b from-blue-500 to-blue-700 rounded-lg w-auto relative cursor-pointer overflow-hidden water-effect hover:border-blue-600"
