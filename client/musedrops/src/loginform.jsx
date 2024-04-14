@@ -6,7 +6,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
@@ -30,7 +30,7 @@ function Login() {
 
     } else {
       // Display an error message to the user
-      alert(data.error);
+      setError(data.error);
     }
   };
 
@@ -43,6 +43,7 @@ function Login() {
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className=' border-2 border-blue-900 w-80 p-2 mb-4 border border-gray-300 rounded focus:outline-none focus:border-blue-500'/>
             <button type="submit" className='w-80 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline border-2 border-blue-900'>Login</button>
         </form>
+        {error && <p className="text-red-500">{error}</p>}
         <Link to="/register">
         <p className=' mt-4 underline'>Create An Account</p>
         </Link>
