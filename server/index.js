@@ -81,6 +81,30 @@ app.post('/api/register', (req, res) => {
   });
 });
 
+//Login endpoint
+app.post('/api/login', (req, res) => {
+  const { email, password } = req.body;
+
+  const sql = 'SELECT * FROM users WHERE email = ?';
+  connection.query(sql, [email], (err, results) => {
+    if (err) {
+      res.status(500).json({ error: 'Failed to login' });
+    } else if (results.length === 0) {
+      res.status(401).json({ error: 'Invalid email or password' });
+    } else {
+      const user = results[0];
+      const passwordMatch = bcrypt.compareSync(password, user.password);
+
+      if (passwordMatch) {
+        // Generate JWT token or session
+        res.json({ message: 'Login successful' });
+      } else {
+        res.status(401).json({ error: 'Invalid email or password' });
+      }
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

@@ -1,17 +1,37 @@
 import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { login } from '../actions/authActions';
-import "./tailindex.css"
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import "./tailindex.css";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-//   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // dispatch(login(email, password));
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    // Make the HTTP POST request to the backend API
+    const response = await fetch('http://localhost:5005/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }), // Send email and password in JSON format
+    });
+
+    // Parse the JSON response
+    const data = await response.json();
+
+    // Check if the login was successful
+    if (response.ok) {
+      // Redirect the user to another page, for example, '/dashboard'
+      navigate("/");
+
+    } else {
+      // Display an error message to the user
+      alert(data.error);
+    }
   };
 
   return (
