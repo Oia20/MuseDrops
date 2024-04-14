@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import "./tailindex.css";
 import { useNavigate, Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const [error, setError] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
@@ -26,6 +28,7 @@ function Login() {
     // Check if the login was successful
     if (response.ok) {
       // Redirect the user to another page, for example, '/dashboard'
+      dispatch({ type: 'LOGIN' });
       navigate("/");
 
     } else {

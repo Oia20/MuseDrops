@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Post from "./post.jsx"
 import "./tailindex.css"
-import LogButton from "./login.jsx"
 function App() {
   const [copied, setCopied] = useState(false);
 
@@ -59,7 +58,6 @@ function App() {
 
   return (
     <div className="pool-tile relative">
-      <LogButton />
       <h1 className="text-center p-10 text-5xl font-bold">Most Recent Droplets</h1>
       <p className="text-center font-bold">*Click a muse to copy it to clipboard*</p>
       {data.map(item => (
