@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { useDispatch } from 'react-redux';
 // import { login } from '../actions/authActions';
 import "./tailindex.css"
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, redirect } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const [regSuccess, setRegSuccess] = useState(false);
+  const navigate = useNavigate();
 //   const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
@@ -24,7 +26,7 @@ function Register() {
         const data = await response.json();
         if (response.ok) {
             // Registration successful, redirect to login page
-            setRegistrationSuccess(true);
+            setRegSuccess(true)
           } else {
             // Registration failed, display error message
             setError(data.error);
@@ -36,9 +38,9 @@ function Register() {
         // Handle error, e.g., display error message to user
         }
     };
-    if (registrationSuccess) {
-        return <Link to="/login" />;
-      }
+    if (regSuccess) {
+      navigate("/login");
+    }
   return (
     <div className='h-screen flex justify-center items-center flex-col pb-40'>
         <img src="Muse.png" alt="Musedrops Logo" className=" h-28 w-28 border-2 border-blue-900 mb-4" />
