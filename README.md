@@ -1,5 +1,6 @@
 # MuseDrops
 Static Demo: https://oia20.github.io/MuseDropsStatic/
+
 A project where people post their "Muses" and they are displayed in a feed of other muses.
 
 The projects tech stack is Vite, React, Express/Node, MySQL, TailwindCSS, and Redux.
